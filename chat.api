@@ -1,0 +1,11 @@
+syntax = "v1"
+
+info(
+	title: "chat"
+	desc: "chat"
+	author: "grail"
+	email: "nocilol@163.com"
+	version: "v1.0.0"
+)
+
+import "api/base.api"

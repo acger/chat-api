@@ -1,0 +1,12 @@
+Name: chat-api
+Host: 0.0.0.0
+Port: 50003
+Timeout: 0
+Auth:
+  AccessSecret: "kkr@kkr@kkr"
+  AccessExpire: 7200
+ChatSvc:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: chat.rpc
