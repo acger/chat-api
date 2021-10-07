@@ -4,9 +4,9 @@ Port: 50003
 Timeout: 0
 Auth:
   AccessSecret: "kkr@kkr@kkr"
-  AccessExpire: 7200
+  AccessExpire: 7776000
 ChatSvc:
   Etcd:
     Hosts:
-      - localhost:2379
+      - etcd.default.svc.cluster.local:2379
     Key: chat.rpc
