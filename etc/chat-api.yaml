@@ -10,3 +10,8 @@ ChatSvc:
     Hosts:
       - etcd.default.svc.cluster.local:2379
     Key: chat.rpc
+Log:
+  ServiceName: "chat-api"
+  Mode: "file"
+  Path: "/var/log/filebeat/chat-api"
+  Level: "error"
