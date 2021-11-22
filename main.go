@@ -24,7 +24,7 @@ func main() {
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
 
-	manager := logic.NewManager()
+	manager := logic.NewManager(ctx)
 	go manager.Run()
 
 	handler.RegisterHandlers(server, ctx)

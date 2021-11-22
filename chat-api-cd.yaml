@@ -35,11 +35,15 @@ spec:
         volumeMounts:
         - name: timezone
           mountPath: /etc/localtime
+        - name: varlog
+          mountPath: /var/log/filebeat
       volumes:
         - name: timezone
           hostPath:
             path: /usr/share/zoneinfo/Asia/Shanghai
-
+        - name: varlog
+          hostPath:
+            path: /var/log/filebeat
 ---
 
 apiVersion: v1

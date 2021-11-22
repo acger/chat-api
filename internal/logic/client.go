@@ -95,6 +95,11 @@ func (c *Client) readPump() {
 	}
 }
 
+//Send message to Queue
+func (c *Client) sendToQueue(message []byte) {
+	c.hub.manager.svcCtx.KPusher.SendWithTopic("pair-chat", string(message))
+}
+
 // writePump pumps messages from the hub to the websocket connection.
 //
 // A goroutine running writePump is started for each connection. The
@@ -122,12 +127,15 @@ func (c *Client) writePump() {
 				return
 			}
 			w.Write(message)
+			go c.sendToQueue(message)
 
 			// Add queued chat messages to the current websocket message.
 			n := len(c.send)
 			for i := 0; i < n; i++ {
 				w.Write(newline)
-				w.Write(<-c.send)
+				m := <-c.send
+				w.Write(m)
+				go c.sendToQueue(m)
 			}
 
 			if err := w.Close(); err != nil {

@@ -7,9 +7,14 @@ import (
 
 type Config struct {
 	rest.RestConf
+
 	Auth struct {
 		AccessSecret string
 		AccessExpire int64
+	}
+
+	Kq struct {
+		Hosts []string
 	}
 
 	ChatSvc zrpc.RpcClientConf

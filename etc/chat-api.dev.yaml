@@ -1,0 +1,20 @@
+Name: chat-api
+Host: 0.0.0.0
+Port: 50003
+Timeout: 0
+Log:
+  ServiceName: "chat-api"
+  Mode: "file"
+  Path: "/var/log/filebeat/chat-api"
+  Level: "error"
+Auth:
+  AccessSecret: "kkr@kkr@kkr"
+  AccessExpire: 7776000
+ChatSvc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: chat.rpc
+Kq:
+  Hosts:
+    - 127.0.0.1:9092

@@ -1,16 +1,20 @@
 package logic
 
+import "github.com/acger/chat-api/internal/svc"
+
 type Manager struct {
 	chatroom   map[string]*Hub
 	register   chan *Hub
 	unregister chan *Hub
+	svcCtx     *svc.ServiceContext
 }
 
-func NewManager() *Manager {
+func NewManager(ctx *svc.ServiceContext) *Manager {
 	return &Manager{
 		chatroom:   make(map[string]*Hub),
 		register:   make(chan *Hub),
 		unregister: make(chan *Hub),
+		svcCtx:     ctx,
 	}
 }
 
