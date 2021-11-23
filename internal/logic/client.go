@@ -135,7 +135,7 @@ func (c *Client) writePump() {
 				w.Write(newline)
 				m := <-c.send
 				w.Write(m)
-				go c.sendToQueue(m)
+				//go c.sendToQueue(m)
 			}
 
 			if err := w.Close(); err != nil {
