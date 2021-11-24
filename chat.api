@@ -5,7 +5,7 @@ info(
 	desc: "chat"
 	author: "grail"
 	email: "nocilol@163.com"
-	version: "v1.0.0"
+	version: "v1.0.1"
 )
 
 import "api/base.api"
