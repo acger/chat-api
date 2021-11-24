@@ -21,7 +21,7 @@ jobs:
       env:
         REP: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}
       run: |
-        docker build -t $REP .
+        docker build -t $REP:$(date +%s) .
         docker push $REP
     
       
