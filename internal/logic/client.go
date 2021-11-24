@@ -93,7 +93,7 @@ func (c *Client) readPump() {
 
 		c.hub.broadcast <- broadcastMsg
 
-		go c.sendToQueue(broadcastMsg)
+		//go c.sendToQueue(broadcastMsg)
 	}
 }
 
