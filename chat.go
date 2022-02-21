@@ -3,12 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+
 	"github.com/acger/chat-api/internal/config"
 	"github.com/acger/chat-api/internal/handler"
 	"github.com/acger/chat-api/internal/logic"
 	"github.com/acger/chat-api/internal/svc"
-	"github.com/tal-tech/go-zero/core/conf"
-	"github.com/tal-tech/go-zero/rest"
+
+	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/rest"
 	"net/http"
 )
 
@@ -27,8 +29,6 @@ func main() {
 	manager := logic.NewManager(ctx)
 	go manager.Run()
 
-	handler.RegisterHandlers(server, ctx)
-
 	server.AddRoute(rest.Route{
 		Method: http.MethodGet,
 		Path:   "/ws",
@@ -36,6 +36,8 @@ func main() {
 			logic.ServeWs(manager, w, r)
 		},
 	})
+
+	handler.RegisterHandlers(server, ctx)
 
 	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
 	server.Start()

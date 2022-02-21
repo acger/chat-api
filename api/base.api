@@ -62,7 +62,7 @@ type (
 
 @server(
     jwt: Auth
-    group: chat
+    group: chatGroup
 )
 
 service chat-api {
@@ -76,7 +76,7 @@ service chat-api {
 
     @doc "聊天会话列表"
     @handler ChatHistory
-    get /chat/history () returns (ChatHistoryRsp)
+    get /chat/history returns (ChatHistoryRsp)
 
     @doc "保存历史聊天会话"
     @handler ChatHistorySave
@@ -84,7 +84,7 @@ service chat-api {
 
     @doc "未读聊天会话数"
     @handler ChatHistoryNumber
-    get /chat/history/number () returns (ChatNumberRsp)
+    get /chat/history/number returns (ChatNumberRsp)
 }
 
 

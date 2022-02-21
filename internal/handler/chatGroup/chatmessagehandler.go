@@ -1,16 +1,15 @@
-package handler
+package chatGroup
 
 import (
 	"net/http"
 
-	"github.com/acger/chat-api/internal/logic/chat"
+	"github.com/acger/chat-api/internal/logic/chatGroup"
 	"github.com/acger/chat-api/internal/svc"
 	"github.com/acger/chat-api/internal/types"
-
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func ChatMessageHandler(ctx *svc.ServiceContext) http.HandlerFunc {
+func ChatMessageHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.ChatMessageReq
 		if err := httpx.Parse(r, &req); err != nil {
@@ -18,7 +17,7 @@ func ChatMessageHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewChatMessageLogic(r.Context(), ctx)
+		l := chatGroup.NewChatMessageLogic(r.Context(), svcCtx)
 		resp, err := l.ChatMessage(req)
 		if err != nil {
 			httpx.Error(w, err)

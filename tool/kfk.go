@@ -3,7 +3,7 @@ package tool
 import (
 	"fmt"
 	"github.com/Shopify/sarama"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 	"log"
 	"os"
 	"time"

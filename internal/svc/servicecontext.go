@@ -4,7 +4,7 @@ import (
 	"github.com/acger/chat-api/internal/config"
 	"github.com/acger/chat-api/tool"
 	"github.com/acger/chat-svc/chat"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {

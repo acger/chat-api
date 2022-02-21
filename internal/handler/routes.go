@@ -4,39 +4,39 @@ package handler
 import (
 	"net/http"
 
-	chat "github.com/acger/chat-api/internal/handler/chat"
+	chatGroup "github.com/acger/chat-api/internal/handler/chatGroup"
 	"github.com/acger/chat-api/internal/svc"
 
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/rest"
 )
 
-func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
-	engine.AddRoutes(
+func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
 				Path:    "/chat/message",
-				Handler: chat.ChatMessageHandler(serverCtx),
+				Handler: chatGroup.ChatMessageHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/chat/message/save",
-				Handler: chat.ChatMessageSaveHandler(serverCtx),
+				Handler: chatGroup.ChatMessageSaveHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/chat/history",
-				Handler: chat.ChatHistoryHandler(serverCtx),
+				Handler: chatGroup.ChatHistoryHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/chat/history/save",
-				Handler: chat.ChatHistorySaveHandler(serverCtx),
+				Handler: chatGroup.ChatHistorySaveHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/chat/history/number",
-				Handler: chat.ChatHistoryNumberHandler(serverCtx),
+				Handler: chatGroup.ChatHistoryNumberHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

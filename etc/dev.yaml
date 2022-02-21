@@ -13,8 +13,8 @@ Auth:
 ChatSvc:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+      - dev.ll:2379
     Key: chat.rpc
 Kq:
   Hosts:
-    - 127.0.0.1:9092
+    - dev.ll:9092

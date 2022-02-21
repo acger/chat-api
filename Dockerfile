@@ -13,7 +13,7 @@ ADD go.sum .
 RUN go mod download
 COPY . .
 COPY ./etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/main ./main.go
+RUN go build -ldflags="-s -w" -o /app/main ./chat.go
 
 
 FROM alpine
